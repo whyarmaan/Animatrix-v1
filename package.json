@@ -1,0 +1,29 @@
+{
+  "name": "animatrixback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon app.js"
+  },
+  "author": "Armaan Gupta",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bcrypt": "^5.0.0",
+    "bcryptjs": "^2.4.3",
+    "chai": "^4.2.0",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^8.2.1",
+    "mongoose": "^5.10.11",
+    "nodemailer": "^6.4.14",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "socket.io": "^2.3.0",
+    "uuid": "^8.3.1"
+  }
+}
