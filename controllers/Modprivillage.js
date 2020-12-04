@@ -1,4 +1,5 @@
 const User = require("../models/User");
+
 exports.postBan = (req, res, next) => {
   const { UserID, banTill } = req.body;
   User.findById(UserID)
