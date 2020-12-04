@@ -9,6 +9,7 @@ const ChatRoom = require("../controllers/Chatroom");
 const Bots = require("../controllers/Bots");
 const ResetPass = require("../controllers/Resetpass");
 const ModPrivillage = require("../controllers/Modprivillage");
+const notBanned = require("../handlers/notBanned");
 
 // POST /auth/signup
 router.post("/auth/signup", Auth.postSignup);
@@ -21,7 +22,7 @@ router.post("/auth/signin", Auth.postSignin);
     @req.query: [accessToken, refreshToken]
     @perms: [Auth]
 */
-router.post("/post/new", isAuth, Post.postNew);
+router.post("/post/new", isAuth, notBanned, Post.postNew);
 
 // GET /posts/
 router.get("/posts", Post.getPosts);
@@ -31,14 +32,14 @@ router.get("/posts", Post.getPosts);
     @req.query: [accessToken, refreshToken]
     @perms: [Auth, Mod]
 */
-router.post("/chatRoom/new", isAuth, isMod, ChatRoom.postNew);
+router.post("/chatRoom/new", isAuth, notBanned, isMod, ChatRoom.postNew);
 
 // GET /chatRoom/all
 /*
     @req.query: [accessToken, refreshToken]
     @perms: [Auth]
 */
-router.get("/chatRooms/", isAuth, ChatRoom.getAll);
+router.get("/chatRooms/", isAuth, notBanned, ChatRoom.getAll);
 
 // POST /bots/:name
 /*
@@ -46,7 +47,7 @@ router.get("/chatRooms/", isAuth, ChatRoom.getAll);
     @req.query: [accessToken, refreshToken]
     @perms: [Auth]
 */
-router.post("/bots/:name", isAuth, Bots.postBot);
+router.post("/bots/:name", isAuth, notBanned, Bots.postBot);
 
 // POST /auth/restpass
 /*
@@ -67,5 +68,12 @@ router.post("/auth/resetpass/validate", ResetPass.validate);
     @perms: [Auth, Mod]
 */
 router.post("/mod/ban", isAuth, isMod, ModPrivillage.postBan);
+
+// POST /mod/removeban
+/*
+    @req.body: [UserID]
+    @perms: [Auth, Mod]
+*/
+router.post("/mod/removeban", isAuth, isMod, ModPrivillage.postRemoveBan);
 
 module.exports = router;

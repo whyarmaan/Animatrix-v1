@@ -1,5 +1,4 @@
 const User = require("../models/User");
-
 exports.postBan = (req, res, next) => {
   const { UserID, banTill } = req.body;
   User.findById(UserID)
@@ -27,5 +26,33 @@ exports.postBan = (req, res, next) => {
     .catch((err) => {
       console.error(err);
       return res.status(401).json({ err, message: "[DB] Error" });
+    });
+};
+
+exports.postRemoveBan = (req, res, next) => {
+  const { UserID } = req.body;
+  User.findById(UserID)
+    .then((doc) => {
+      doc.isBanned = false;
+      doc
+        .save()
+        .then((newDoc) => {
+          console.log(newDoc.isBanned);
+          return res.json({
+            isBanned: newDoc.isBanned,
+          });
+        })
+        .catch((err) => {
+          console.log(err.message);
+          return res.status(300).json({
+            message: "[DATABASE] Err while saving Document!!",
+          });
+        });
+    })
+    .catch((err) => {
+      console.log(err.message);
+      return res.status(300).json({
+        message: "[DATABASE] Err!",
+      });
     });
 };

@@ -14,8 +14,6 @@ app.use(express.json());
 app.use(cors());
 app.use(api);
 
-//* Sockets *//
-
 //* Port Configs And Database Stuffs *//
 let port = CONSTANTS.PORT;
 mongoose

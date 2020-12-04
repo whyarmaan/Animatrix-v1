@@ -5,7 +5,7 @@
 [ &times; ] Allow signed in users to chat in different rooms
 [ &times; ] Allow signed in mods to make different rooms
 [ &times; ] Think about the privillages mods will get
-[  ] Add mod privillages like baning someone
+[ &times; ] Add mod privillages like baning someone
 [  ] Make a bot section
 [ &times; ] Make a anime bot
 [  ] Make a gaming bot
