@@ -10,7 +10,7 @@
   "author": "Armaan Gupta",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "chai": "^4.2.0",
